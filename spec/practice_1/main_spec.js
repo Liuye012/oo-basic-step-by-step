@@ -5,15 +5,27 @@ var sinon = require("sinon");
 var sinonChai = require("sinon-chai");
 var expect = chai.expect;
 chai.use(sinonChai);
+var Person = require("../../src/practice_1");
 
-describe("OO入门", function(){
-    it("写一个类-1", function(){
-        sinon.spy(console, 'log');
 
-        require("../../src/practice_1")
-        var result = _.flatten(console.log.args).join("\n");
-        var expect_string = '下面是部分学生的成绩详情\n沙龙逸\t语文124 数学148 英语137\n刘钰婷\t语文115 数学139 英语135\n韩林霖\t语文127 数学139 英语142\n平均成绩\t语文122 数学142 英语138';
-        
-        expect(expect_string).to.equal(result);
-    });
+describe("person", function () {
+  it("person column", function () {
+
+    var person = new Person('WangNing', 21);
+    var person_name = person.name;
+    var person_age = person.age;
+
+    var expect_name = 'WangNing';
+    var expect_age = 21;
+
+    expect(expect_name).to.equal(person_name);
+    expect(expect_age).to.equal(person_age);
+  });
+  it("person function introduce", function () {
+   var person1=new Person('Tom',21)
+    var result=person1.introduce();
+
+    var expect_string='My name is Tom. I am 21 years old.';
+    expect(expect_string).to.equal(result);
+  })
 });
